@@ -16,3 +16,8 @@ MAF background- The minor allele frequency (MAF) refers to the lower allele freq
 Or MAF is frequency of the second most frequent allele for a given SNP. In other words, if there are 3 alleles, with frequencies of 0.50, 0.49, and 0.01, the MAF will be reported as 0.49.
 
 If the MAF is low, it might imply that the major allele for the SNP is conserved and more or less fixed, but not necessarily. This measure gives an idea about the variation of genotypes for a given SNP in a given population, in other words it gives an idea about how common that SNP is. MAF helps to differentiate the common and rare SNPs in a population.
+
+
+# Annotation
+
+To annotate the variants that have passed all the filters, one can use several tools such as SnpEff, VEP etc. Here, VEP106 was used to annotate the variants
