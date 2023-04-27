@@ -1,9 +1,9 @@
 
 # Mutect2 variant calls on a single sample of T-N sample
 
-This pipeline is for running Mutect2 from GATK4.2.5, annotating and then subsetting to CGC genes of interest. These are WGS data of tRCC pateints on 18 samples. The pipeline is variant calls using Mutect2 for a single sample run followed by filtering and annotation with SnpEff.
+This pipeline is for running Mutect2 from GATK4.2.5, annotating and then subsetting to CGC genes of interest. These are WGS data of tRCC patients on 18 samples. The pipeline is variant calls using Mutect2 for a single sample run followed by filtering and annotation with VEP106.
 
-The run can be split into chromosomes or by specifying co-ordinates to run in parallel otherwise a single run can take ~60-90hrs! If scatter and gather method is used, additional steps of merging vcfs are required at the end. All the bam files are from Srinivas lab at DFCI. 
+The run can be split into chromosomes or by specifying co-ordinates to run in parallel otherwise a single run can take ~60-90hrs! If scatter and gather method is used, additional steps of merging vcfs are required at the end. 
 
 For variant calls, make sure to name the tumor and normal files. If name error occurs during run, check read group in bam files and use that sample name. Germline resource used here is af-only-gnomad.hg38.vcf.gz from GATK bucket resource. Germline resource reduces artifacts. PON can be of two types as most of PONs are designed for exome. Make sure to use the right publicly available PON released by GATK depending on whether the data are exome or WGS. You can create your own PON from your normal samples but this PON gives almost all the essential as it uses 1000 genome. 
 f1r2 flag used here replaces old version of GATK Mutect2 FilterByOrientation bias. f1r2 generates read oreintation artifacts from the alignment (this includes OxoG artifacts most commonly found in FFPE samples due to oxidative DNA damage. OxoG artifacts stem from oxidation of guanine to 8-oxoguanine, which results in G to T transversions or deamination of cytosines, which results in C to T transitions). This f1r2 file will be later used to generate read orientation bias (ob priors) later to be used for mutect filter calls. However, another GATK command --bam-output canbe used while variant calling for FFPE samples.
